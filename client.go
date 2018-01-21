@@ -17,6 +17,8 @@ type OA struct {
 	Cqmail *Cqmail
 	IIS    *IIS
 	Mssql *Mssql
+	Mysql *Mysql
+	ProFTPD *ProFTPD
 }
 
 // APS is just a link to oa object. It needs for comfortable api using (the same as in doc), e.g:
@@ -46,6 +48,14 @@ type IIS struct {
 }
 
 type Mssql struct {
+	client *xmlrpc.Client
+}
+
+type Mysql struct {
+	client *xmlrpc.Client
+}
+
+type ProFTPD struct {
 	client *xmlrpc.Client
 }
 
@@ -122,4 +132,12 @@ func (iis *IIS) SendRequest(method string, params interface{}) (map[string]inter
 
 func (mssql *Mssql) SendRequest(method string, params interface{}) (map[string]interface{}, error) {
 	return call(mssql.client, method, params)
+}
+
+func (mysql *Mysql) SendRequest(method string, params interface{}) (map[string]interface{}, error) {
+	return call(mysql.client, method, params)
+}
+
+func (proftpd *ProFTPD) SendRequest(method string, params interface{}) (map[string]interface{}, error) {
+	return call(proftpd.client, method, params)
 }
