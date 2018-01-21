@@ -8,8 +8,6 @@ import (
 	"github.com/kolo/xmlrpc"
 )
 
-// TODO: Consider glog using
-
 type OA struct {
 	client *xmlrpc.Client
 	APS    *APS
@@ -19,6 +17,12 @@ type OA struct {
 	Mssql *Mssql
 	Mysql *Mysql
 	ProFTPD *ProFTPD
+	Sharepoint *Sharepoint
+	SpamAssassin *SpamAssassin
+	Tasks *Tasks
+	Virtuozzo *Virtuozzo
+	WebCluster *WebCluster
+	TXN *TXN
 }
 
 // APS is just a link to oa object. It needs for comfortable api using (the same as in doc), e.g:
@@ -59,6 +63,30 @@ type ProFTPD struct {
 	client *xmlrpc.Client
 }
 
+type Sharepoint struct {
+	client *xmlrpc.Client
+}
+
+type SpamAssassin struct {
+	client *xmlrpc.Client
+}
+
+type Tasks struct {
+	client *xmlrpc.Client
+}
+
+type Virtuozzo struct {
+	client *xmlrpc.Client
+}
+
+type WebCluster struct {
+	client *xmlrpc.Client
+}
+
+type TXN struct {
+	client *xmlrpc.Client
+}
+
 type Response struct {
 	ErrorMessage string `xmlrpc:"error_message"`
 	Result       map[string]interface{} `xmlrpc:"result"`
@@ -84,6 +112,15 @@ func GetClient(hostname string, login string, password string, ssl bool, port in
 	oa.Ad = &Ad{Binding: &Binding{client: client}}
 	oa.Cqmail = &Cqmail{client: client}
 	oa.IIS = &IIS{client: client}
+	oa.Mssql = &Mssql{client: client}
+	oa.Mysql = &Mysql{client: client}
+	oa.ProFTPD = &ProFTPD{client: client}
+	oa.Sharepoint = &Sharepoint{client: client}
+	oa.SpamAssassin = &SpamAssassin{client: client}
+	oa.Tasks = &Tasks{client: client}
+	oa.Virtuozzo = &Virtuozzo{client: client}
+	oa.WebCluster = &WebCluster{client: client}
+	oa.TXN = &TXN{client: client}
 
 	return &oa, nil
 }
@@ -140,4 +177,28 @@ func (mysql *Mysql) SendRequest(method string, params interface{}) (map[string]i
 
 func (proftpd *ProFTPD) SendRequest(method string, params interface{}) (map[string]interface{}, error) {
 	return call(proftpd.client, method, params)
+}
+
+func (sharepoint *Sharepoint) SendRequest(method string, params interface{}) (map[string]interface{}, error) {
+	return call(sharepoint.client, method, params)
+}
+
+func (spamAssassin *SpamAssassin) SendRequest(method string, params interface{}) (map[string]interface{}, error) {
+	return call(spamAssassin.client, method, params)
+}
+
+func (tasks *Tasks) SendRequest(method string, params interface{}) (map[string]interface{}, error) {
+	return call(tasks.client, method, params)
+}
+
+func (virtuozzo *Virtuozzo) SendRequest(method string, params interface{}) (map[string]interface{}, error) {
+	return call(virtuozzo.client, method, params)
+}
+
+func (webCluster *WebCluster) SendRequest(method string, params interface{}) (map[string]interface{}, error) {
+	return call(webCluster.client, method, params)
+}
+
+func (txn *TXN) SendRequest(method string, params interface{}) (map[string]interface{}, error) {
+	return call(txn.client, method, params)
 }

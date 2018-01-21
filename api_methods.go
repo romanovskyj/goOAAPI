@@ -1096,6 +1096,50 @@ func (oa *OA) SetSystemProperty(params interface{}) (map[string]interface{}, err
 	return oa.SendRequest("pem.setSystemProperty", params)
 }
 
+func (sharepoint *Sharepoint) CreateSharePointSite(params interface{}) (interface{}, error) {
+	return sharepoint.SendRequest("pem.sharepoint.createSharePointSite", params)
+}
+
+func (spamAssassin *SpamAssassin) AddItems(params interface{}) (interface{}, error) {
+	return spamAssassin.SendRequest("pem.spam_assassin.addItems", params)
+}
+
+func (spamAssassin *SpamAssassin) DeleteItems(params interface{}) (interface{}, error) {
+	return spamAssassin.SendRequest("pem.spam_assassin.deleteItems", params)
+}
+
+func (spamAssassin *SpamAssassin) GetItems(params interface{}) (interface{}, error) {
+	return spamAssassin.SendRequest("pem.spam_assassin.getItems", params)
+}
+
+func (tasks *Tasks) RescheduleTask(params interface{}) (interface{}, error) {
+	return tasks.SendRequest("pem.tasks.rescheduleTask", params)
+}
+
+func (sharepoint *Sharepoint) DeleteSharePointSite(params interface{}) (interface{}, error) {
+	return sharepoint.SendRequest("pem.sharepoint.deleteSharePointSite", params)
+}
+
+func (sharepoint *Sharepoint) GetAvailableSharePointSiteTemplates(params interface{}) (interface{}, error) {
+	return sharepoint.SendRequest("pem.sharepoint.getAvailableSharePointSiteTemplates", params)
+}
+
+func (sharepoint *Sharepoint) AddSharePointUser(params interface{}) (interface{}, error) {
+	return sharepoint.SendRequest("pem.sharepoint.addSharePointUser", params)
+}
+
+func (sharepoint *Sharepoint) RemoveSharePointUser(params interface{}) (interface{}, error) {
+	return sharepoint.SendRequest("pem.sharepoint.removeSharePointUser", params)
+}
+
+func (sharepoint *Sharepoint) CreateSharePointSiteInSharedApplication(params interface{}) (interface{}, error) {
+	return sharepoint.SendRequest("pem.sharepoint.createSharePointSiteInSharedApplication", params)
+}
+
+func (sharepoint *Sharepoint) ModifySharePointSiteLimits(params interface{}) (interface{}, error) {
+	return sharepoint.SendRequest("pem.sharepoint.modifySharePointSiteLimits", params)
+}
+
 func (oa *OA) UploadLicense(params interface{}) (map[string]interface{}, error) {
 	return oa.SendRequest("pem.uploadLicense", params)
 }
@@ -1118,6 +1162,49 @@ func (oa *OA) UpdateAccountAndAccountMember(params interface{}) (map[string]inte
 
 func (oa *OA) UpgradeSubscription(params interface{}) (map[string]interface{}, error) {
 	return oa.SendRequest("pem.upgradeSubscription", params)
+}
+
+func (virtuozzo *Virtuozzo) AttachVPS(params interface{}) (interface{}, error) {
+	return virtuozzo.SendRequest("pem.virtuozzo.attachVPS", params)
+}
+
+func (virtuozzo *Virtuozzo) ImportTemplate(params interface{}) (interface{}, error) {
+	return virtuozzo.SendRequest("pem.virtuozzo.importTemplate", params)
+}
+
+func (virtuozzo *Virtuozzo) InstallTemplate(params interface{}) (interface{}, error) {
+	return virtuozzo.SendRequest("pem.virtuozzo.installTemplate", params)
+}
+
+func (virtuozzo *Virtuozzo) InstallTemplates(params interface{}) (interface{}, error) {
+	return virtuozzo.SendRequest("pem.virtuozzo.installTemplates", params)
+}
+
+func (virtuozzo *Virtuozzo) RemoveTemplates(params interface{}) (interface{}, error) {
+	return virtuozzo.SendRequest("pem.virtuozzo.removeTemplates", params)
+}
+
+func (virtuozzo *Virtuozzo) UpdateEZTemplates(params interface{}) (interface{}, error) {
+	return virtuozzo.SendRequest("pem.virtuozzo.updateEZTemplates", params)
+}
+
+func (virtuozzo *Virtuozzo) RegisterHWNode(params interface{}) (interface{}, error) {
+	return virtuozzo.SendRequest("pem.virtuozzo.registerHWNode", params)
+}
+
+func (webCluster *WebCluster) ChangeNFS(params interface{}) (interface{}, error) {
+	return webCluster.SendRequest("pem.web_cluster.changeNFS", params)
+}
+
+func (txn *TXN) Begin(params interface{}) (map[string]interface{}, error) {
+	return txn.SendRequest("txn.begin", params)
+}
+
+func (txn *TXN) Commit(params interface{}) (map[string]interface{}, error) {
+	return txn.SendRequest("txn.begin", params)
+}
+func (txn *TXN) Rollback(params interface{}) (map[string]interface{}, error) {
+	return txn.SendRequest("txn.begin", params)
 }
 
 func (oa *OA) BindUserToSubscription(params interface{}) (map[string]interface{}, error) {
